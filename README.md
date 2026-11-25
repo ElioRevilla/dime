@@ -8,27 +8,77 @@ La animación muestra salidas capturadas en Windows PowerShell 5.1 con una ruta 
 
 ## Instalación
 
-Necesitas **Python 3.11 o posterior** y un equipo compatible con PyTorch. Clona el repositorio o descarga el ZIP de GitHub y abre una terminal en la carpeta donde está `pyproject.toml`.
+### 1. Prepara Python y pipx en Windows
 
-Si ya tienes [pipx](https://pipx.pypa.io/stable/how-to/install-pipx.html) configurado, instala Dime desde esa carpeta:
+Abre PowerShell y comprueba que tienes **Python 3.11 o posterior**:
 
-```sh
-pipx install .
+```powershell
+py --version
 ```
 
-<details>
-<summary>Cómo instalar pipx en Windows</summary>
+Si falta Python, instálalo desde [python.org](https://www.python.org/downloads/windows/) y vuelve a abrir PowerShell. Si ya tienes pipx, pasa al paso 2. En caso contrario, instálalo y registra su carpeta de comandos:
 
 ```powershell
 py -m pip install --user pipx
 py -m pipx ensurepath
 ```
 
-Abre PowerShell de nuevo y ejecuta `pipx install .` en la carpeta del repositorio.
+Cierra la ventana de PowerShell y abre otra para que se aplique el cambio de `PATH`.
+
+### 2. Descarga Dime y entra en la carpeta correcta
+
+Elige una de estas dos formas. La carpeta correcta es la que **contiene directamente `pyproject.toml`**.
+
+**Opción A · Clonar con Git.** Estos comandos descargan Dime en una carpeta llamada `dime` dentro de tu carpeta de usuario:
+
+```powershell
+Set-Location -LiteralPath $env:USERPROFILE
+git clone https://github.com/ElioRevilla/dime.git
+Set-Location -LiteralPath .\dime
+Get-Item -LiteralPath .\pyproject.toml
+```
+
+**Opción B · Descargar el ZIP.** Descarga [dime-main.zip](https://github.com/ElioRevilla/dime/archive/refs/heads/main.zip), extráelo y entra en `dime-main`. Si la extrajiste directamente en Descargas, la ruta sería:
+
+```powershell
+Set-Location -LiteralPath "$env:USERPROFILE\Downloads\dime-main"
+Get-Item -LiteralPath .\pyproject.toml
+```
+
+Si elegiste otro destino al extraerlo, abre en el Explorador la carpeta donde aparece `pyproject.toml` y abre PowerShell desde allí. La comprobación con `Get-Item` debe mostrar el archivo antes de seguir.
+
+### 3. Instala Dime y pruébalo
+
+Desde `dime` o `dime-main`, ejecuta:
+
+```powershell
+py -m pipx install .
+```
+
+El punto (`.`) indica que pipx instala el proyecto de la carpeta actual. Durante la primera instalación se descargan PyTorch y las demás dependencias que falten. Los pesos ya vienen en el repositorio.
+
+Cuando termine, prueba:
+
+```powershell
+dime "Cuenta las líneas de notas.txt"
+```
+
+Deberías ver `wc -l < 'notas.txt'`. A partir de ahí puedes usar `dime` desde cualquier carpeta, sin activar un entorno virtual. Si PowerShell no reconoce el comando, ejecuta `py -m pipx ensurepath` y vuelve a abrir la terminal.
+
+<details>
+<summary>Instalación en macOS o Linux</summary>
+
+Instala [pipx para tu sistema](https://pipx.pypa.io/stable/how-to/install-pipx.html) y usa Python 3.11 o posterior. Si tienes Git:
+
+```sh
+git clone https://github.com/ElioRevilla/dime.git
+cd dime
+pipx install .
+```
+
+Si descargaste el ZIP, ejecuta `pipx install .` desde la carpeta extraída `dime-main`. Si prefieres usar un entorno de Python que ya tienes configurado, puedes ejecutar `python -m pip install .` desde esa misma carpeta.
 
 </details>
-
-También puedes ejecutar `python -m pip install .` en un entorno de Python que ya uses. La instalación descarga las dependencias que falten. Después, la inferencia funciona localmente con el modelo incluido.
 
 ## Uso
 
