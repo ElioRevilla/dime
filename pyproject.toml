@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dime-terminal"
+version = "0.2.0"
+description = "Asistente local en español para consultas Bash y expresiones regulares"
+requires-python = ">=3.11"
+readme = "README.md"
+license-files = ["THIRD_PARTY_NOTICES.md", "licenses/deep-regex-MIT.txt"]
+dependencies = ["torch>=2.11,<3", "tokenizers==0.22.2"]
+
+[project.scripts]
+dime = "dime_terminal_cli.cli:main"
+
+[tool.setuptools]
+packages = ["dime_terminal_cli"]
+
+[tool.setuptools.package-data]
+dime_terminal_cli = ["models/v6/model_inference.pt", "models/v6/tokenizer.json", "models/v6/metadata.json"]

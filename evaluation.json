@@ -1,0 +1,107 @@
+{
+  "dataset_version": "v6_es_equilibrado",
+  "checkpoint_step": 3400,
+  "test": {
+    "metric": "exact text match and end of sequence",
+    "model_sha256": "6aa5ecc5bb9d66166b71e827aa38628a2f71319bc3e3606d16ad593922d650fb",
+    "test_sha256": "e08f13f6f36e4ebd050386eec5c5f71bf81ff8f7ac493bdf78ec716e6f833a35",
+    "overall": {
+      "examples": 719,
+      "exact_matches": 700,
+      "exact_match_rate": 0.9735744089012517,
+      "by_task_language": {
+        "bash:es": {
+          "examples": 410,
+          "exact_matches": 392
+        },
+        "regex:es": {
+          "examples": 309,
+          "exact_matches": 308
+        }
+      },
+      "literal_copy": {
+        "correct": 392,
+        "examples": 410,
+        "accuracy": 0.9560975609756097,
+        "scope": "Bash file/directory values compared to shell-parsed tokens; no commands are executed."
+      }
+    },
+    "axes": {
+      "copy": {
+        "examples": 226,
+        "exact_matches": 216,
+        "exact_match_rate": 0.9557522123893806,
+        "by_task_language": {
+          "bash:es": {
+            "examples": 130,
+            "exact_matches": 121
+          },
+          "regex:es": {
+            "examples": 96,
+            "exact_matches": 95
+          }
+        },
+        "literal_copy": {
+          "correct": 121,
+          "examples": 130,
+          "accuracy": 0.9307692307692308,
+          "scope": "Bash file/directory values compared to shell-parsed tokens; no commands are executed."
+        }
+      },
+      "interpretation": {
+        "examples": 267,
+        "exact_matches": 267,
+        "exact_match_rate": 1.0,
+        "by_task_language": {
+          "bash:es": {
+            "examples": 150,
+            "exact_matches": 150
+          },
+          "regex:es": {
+            "examples": 117,
+            "exact_matches": 117
+          }
+        },
+        "literal_copy": {
+          "correct": 150,
+          "examples": 150,
+          "accuracy": 1.0,
+          "scope": "Bash file/directory values compared to shell-parsed tokens; no commands are executed."
+        }
+      },
+      "combined": {
+        "examples": 226,
+        "exact_matches": 217,
+        "exact_match_rate": 0.9601769911504425,
+        "by_task_language": {
+          "bash:es": {
+            "examples": 130,
+            "exact_matches": 121
+          },
+          "regex:es": {
+            "examples": 96,
+            "exact_matches": 96
+          }
+        },
+        "literal_copy": {
+          "correct": 121,
+          "examples": 130,
+          "accuracy": 0.9307692307692308,
+          "scope": "Bash file/directory values compared to shell-parsed tokens; no commands are executed."
+        }
+      }
+    }
+  },
+  "latency": {
+    "metric": "warm_local_time_to_first_token_ms",
+    "samples": 50,
+    "p50_ms": 14.431099996727426,
+    "p95_ms": 15.720699993835296,
+    "max_prompt_tokens": 128,
+    "model_loaded_before_timing": true,
+    "warmup_iterations": 5,
+    "device": "cuda:0",
+    "precision": "bf16"
+  },
+  "latency_hardware": "NVIDIA RTX 3080 Laptop GPU"
+}

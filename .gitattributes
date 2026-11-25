@@ -1,0 +1,5 @@
+*.py text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.pt binary
+dime_terminal_cli/models/v6/tokenizer.json -text
